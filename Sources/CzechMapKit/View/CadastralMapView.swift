@@ -9,15 +9,15 @@ import SwiftUI
 import MapKit
 
 @available(iOS 15.0.0, *)
-struct CadastralMapView: UIViewRepresentable {
+public struct CadastralMapView: UIViewRepresentable {
     var viewModel: CadastralMapViewModel
     private let mapView = MKMapView(frame: UIScreen.main.bounds)
     
-    init(midPoint: CLLocationCoordinate2D) {
+    public init(midPoint: CLLocationCoordinate2D) {
         self.viewModel = CadastralMapViewModel(midPoint: midPoint)
     }
     
-    func makeUIView(context: Context) -> MKMapView {
+    public func makeUIView(context: Context) -> MKMapView {
         // TODO: compute the span from the boundary points
         let span = MKCoordinateSpan(latitudeDelta: 0.002, longitudeDelta: 0.002)
         let region = MKCoordinateRegion(center: viewModel.midPoint, span: span)
@@ -30,11 +30,11 @@ struct CadastralMapView: UIViewRepresentable {
         return mapView
     }
 
-    func updateUIView(_ uiView: MKMapView, context: Context) {
+    public func updateUIView(_ uiView: MKMapView, context: Context) {
     }
     
-    func makeCoordinator() -> CadastreMapViewCoordinator {
-        CadastreMapViewCoordinator(self)
+    public func makeCoordinator() -> CadastralMapViewCoordinator {
+        CadastralMapViewCoordinator(self)
     }
 }
 

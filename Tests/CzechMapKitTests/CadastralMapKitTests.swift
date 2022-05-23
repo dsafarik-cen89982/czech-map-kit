@@ -1,9 +1,9 @@
 import XCTest
 import CoreLocation
-@testable import CadastreMapKit
+@testable import CzechMapKit
 
 @available(iOS 15.0.0, *)
-final class CadastreMapKitTests: XCTestCase {
+final class CadastralMapKitTests: XCTestCase {
     
     func testFetchCadastralParcel() async throws {
         let sut = CadastreFetcher()
