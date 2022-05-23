@@ -7,11 +7,11 @@
 
 import MapKit
 
-@available(iOS 14.0.0, *)
+@available(iOS 15.0.0, *)
 class CadastreMapViewCoordinator: NSObject, MKMapViewDelegate {
-    var parent: CadastreMapView
+    var parent: CadastralMapView
 
-    init(_ parent: CadastreMapView) {
+    init(_ parent: CadastralMapView) {
         self.parent = parent
     }
 
