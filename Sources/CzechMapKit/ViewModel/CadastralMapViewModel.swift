@@ -16,20 +16,7 @@ class CadastralMapViewModel: ObservableObject {
     
     @Published var midPoint: CLLocationCoordinate2D {
         didSet {
-            Task.init {
-                let cadastralParcel = await cadastreFetcher.fetchCadastralParcel(point: midPoint)
-                cadastralParcel?.geometry.Polygon.exterior?.LinearRing.posList
-                    .split(separator: " ")
-                    .compactMap {
-                        Float($0)
-                    }
-                    .publisher
-                    .collect(2)
-                    .sink {
-                        self.boundary.append(CLLocationCoordinate2D(latitude: CLLocationDegrees($0[0]), longitude: CLLocationDegrees($0[1])))
-                    }
-                    .store(in: &subscriptions)
-            }
+            fetchBoundary(midPoint: midPoint)
         }
     }
     
@@ -38,5 +25,23 @@ class CadastralMapViewModel: ObservableObject {
     
     init(midPoint: CLLocationCoordinate2D) {
         self.midPoint = midPoint
+        fetchBoundary(midPoint: midPoint)
+    }
+    
+    func fetchBoundary(midPoint: CLLocationCoordinate2D) {
+        Task.init {
+            let cadastralParcel = await cadastreFetcher.fetchCadastralParcel(point: midPoint)
+            cadastralParcel?.geometry.Polygon.exterior?.LinearRing.posList
+                .split(separator: " ")
+                .compactMap {
+                    Float($0)
+                }
+                .publisher
+                .collect(2)
+                .sink {
+                    self.boundary.append(CLLocationCoordinate2D(latitude: CLLocationDegrees($0[0]), longitude: CLLocationDegrees($0[1])))
+                }
+                .store(in: &subscriptions)
+        }
     }
 }
