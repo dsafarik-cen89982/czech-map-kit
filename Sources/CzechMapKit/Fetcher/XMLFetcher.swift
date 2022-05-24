@@ -16,7 +16,7 @@ class XMLFetcher: Fetcher {
     
     init() {
         decoder = XMLDecoder()
-        logger = Logger(label: "cz.csas.moba.CadastreMapKit.XMLFetcher.main")
+        logger = Logger(label: "cz.csas.moba.CzechMapKit.XMLFetcher.main")
     }
     
     @available(iOS 15.0.0, *)
