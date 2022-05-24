@@ -23,6 +23,6 @@ let package = Package(
                 ]),
         .testTarget(
             name: "CzechMapKitTests",
-            dependencies: ["CzechMapKit"]),
+            dependencies: ["CzechMapKit"])
     ]
 )

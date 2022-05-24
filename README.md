@@ -9,9 +9,8 @@ import SwiftUI
 import CzechMapKit
 
 struct ContentView: View {
-    
     var body: some View {
-        CadastralMapView(midPoint: CLLocationCoordinate2D(latitude: CLLocationDegrees(49.30068), longitude: CLLocationDegrees(16.651604)))
+        CadastralMapView(midPoint: CLLocationCoordinate2D(latitude: CLLocationDegrees(49.30068), longitude: CLLocationDegrees(16.651604)), address: "Adamov")
     }
 }
 ```
