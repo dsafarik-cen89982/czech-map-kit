@@ -38,6 +38,7 @@ class CadastralMapViewModel: ObservableObject {
                 }
                 .publisher
                 .collect(2)
+                .receive(on: DispatchQueue.main)
                 .sink {
                     self.boundary.append(CLLocationCoordinate2D(latitude: CLLocationDegrees($0[0]), longitude: CLLocationDegrees($0[1])))
                 }
